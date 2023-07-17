@@ -12,7 +12,7 @@ interface IProduct extends Document {
     category: string
 }
 
-//Создаем схему продуктов, чтобы определять структуру и типы данных ждя каждого поля продукта
+//Создаем схему продуктов, чтобы определять структуру и типы данных для каждого поля продукта
 const productSchema: Schema = new Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},

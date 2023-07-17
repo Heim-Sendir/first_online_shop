@@ -3,7 +3,9 @@
     "target": "ESNext",
     "module": "commonjs",
     "outDir": "./dist",
-    "strict": true
+    "strict": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop" : true
   },
   "include": [
     "./src"

@@ -1,11 +1,10 @@
-import mongoose from "mongoose";
+import mongoose, { MongooseOptions } from "mongoose";
 
 export async function connectDatabase() {
     try {
-        await mongoose.connect('mongodb://localhost:127.0.0.1:27017/online-shop', {
-            useNewUrlParser: true,
-            useInifiedTopology: true
-        });
+        const options: MongooseOptions = {};
+
+        await mongoose.connect('mongodb://127.0.0.1:27017/online-shop', options);
         console.log('Connected to the database');
     } catch (error) {
         console.log('Database connection error: ', error);
