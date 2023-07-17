@@ -2,14 +2,15 @@
 import mongoose, {Schema, Document} from 'mongoose';
 
 //Импортируем интерфейс товаров и адреса
-import {IProduct} from './products.model';
-import {IShippingAddress} from './shipping_address.model';
+import {Product} from './products.model';
+import {ShippingAddress} from './shipping_address.model';
+import {User} from "./user.model";
 
 //Определяем интерфейс заказа в онлайн магазине
 interface IOrder extends Document {
-    user: IUser['_id'];
-    products: Array<{product: IProduct['_id']; quantity: number}>;
-    shippingAddress: IShippingAddress['_id'];
+    user: User['_id'];
+    products: Array<{product: Product['_id']; quantity: number}>;
+    shippingAddress: ShippingAddress['_id'];
     total: number;
     paymentMethod: string;
     isPaid: boolean;

@@ -1,19 +1,20 @@
 import {Request, Response} from "express";
 import {Product} from "../models/products.model";
-import {connectDatabase} from "../mongodb";
 
 
 export const createProduct = async (req: Request, res: Response) => {
     try {
         //Получаем данные из запроса
-        const {name, price, count, description} = req.body;
+        const {name, price, count, description, category} = req.body;
 
         //Создаем новый экземпляр модели "Товар"
         const newProduct = new Product({
             name,
+            description,
             price,
             count,
-            description
+            category
+
         });
 
         //Сохраняем товар в базе данных

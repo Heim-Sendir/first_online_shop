@@ -1,10 +1,10 @@
 import mongoose, {Schema, Document} from "mongoose";
-import {IUser} from './user.model';
-import {IProduct} from './products.model';
+import {User} from './user.model';
+import {Product} from './products.model';
 
 interface IReview extends Document {
-    user: IUser['_id'];
-    product: IProduct['_id'];
+    user: User['_id'];
+    product: Product['_id'];
     rating: number;
     comment: string;
 }

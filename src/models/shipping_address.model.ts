@@ -1,8 +1,8 @@
-import mongoose {Schema, Document} from "mongoose";
+import mongoose, {Schema, Document} from "mongoose";
 import {User} from './user.model';
 
 interface IShippingAddress extends Document {
-    user: IUser['_id'];
+    user: User['_id'];
     address: string;
     city: string;
     postalCode: string;
@@ -17,4 +17,4 @@ const shippingAddressSchema: Schema = new Schema({
     country: {types: String, required: true}
 });
 
-export const ShippingAddress = mongoose.model<IShippingAddress>{'ShippingAddres', shippingAddressSchema};
+export const ShippingAddress = mongoose.model<IShippingAddress>('ShippingAddres', shippingAddressSchema);
