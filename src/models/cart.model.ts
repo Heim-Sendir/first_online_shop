@@ -17,6 +17,6 @@ const cartSchema: Schema = new Schema({
         }
     ],
     total: {type: Number, default: 0}
-});
+}, {versionKey: false});
 
 export const Cart = mongoose.model<Cart>('Cart', cartSchema);

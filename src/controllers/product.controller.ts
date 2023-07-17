@@ -45,7 +45,7 @@ export const getAllProducts = async (req: Request, res: Response) => {
 
 export const getProductById = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
         const product = await Product.findById(id);
         if (!product) {
             return res.status(404).json({error: 'Товар не найден'})
@@ -59,7 +59,7 @@ export const getProductById = async (req: Request, res: Response) => {
 
 export const updateOneProduct = async (req: Request, res: Response) => {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
         const {name, description, price, count, category} = req.body;
         const updateProduct = await Product.findByIdAndUpdate(
             id,

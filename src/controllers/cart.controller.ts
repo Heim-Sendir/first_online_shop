@@ -1,4 +1,4 @@
-import {Cart} from "src/models/cart.model";
+import {Cart} from "../models/cart.model";
 import {Request, Response} from "express";
 
 
@@ -39,4 +39,3 @@ export const getCartItems = async (req: Request, res: Response) => {
         res.status(500).json({error: error.message});
     }
 };
-

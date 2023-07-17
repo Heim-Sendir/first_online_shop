@@ -25,7 +25,7 @@ const orderSchema: Schema = new Schema({
     paymentMethod: {type: String, required: true},
     isPaid: {type: Boolean, required: true},
     paidAt: {type: Date, required: true}
-});
+}, {versionKey: false});
 
 
 export const Order = mongoose.model<IOrder>('Order', orderSchema);

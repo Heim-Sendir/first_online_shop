@@ -13,7 +13,7 @@ const categorySchema: Schema = new Schema({
     name: {type: String, required: true},
     description: {type: String, required: true},
     active: {type: Boolean, required: true}
-});
+}, {versionKey: false});
 
-export const Category = mongoose.model<ICategory>('Category', categorySchema);
+export const Category = mongoose.model<ICategory>('category', categorySchema);
 

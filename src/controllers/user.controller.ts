@@ -1,13 +1,14 @@
 import {Request, Response} from "express";
-import {User} from 'src/models/user.model';
+import {User} from '../models/user.model';
 
 export const createUser = async (req: Request, res: Response) => {
     try {
-        const {name, email, password} = req.body;
+        const {name, email, password, active} = req.body;
         const newUser = new User ({
             name,
             email,
-            password
+            password,
+            active
         });
 
         const savedUser = await newUser.save();
@@ -33,9 +34,14 @@ export const getUsers = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
     try {
     const { id } = req.params;
-    await User.findByIdAndDelete(id);
+   // await User.findByIdAndDelete(id);
+    await User.findByIdAndUpdate(
+        id,
+        {active: false},
+        {new: true}
+    );
 
-    res.json({message: 'Пользователь успешно удален'});
+    res.json({message: 'Деактивация пользователя прошла успешно'});
     } catch (error) {
         res.status(500).json({error: error.message});
     }

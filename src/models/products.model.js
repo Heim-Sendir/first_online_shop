@@ -9,6 +9,6 @@ var productSchema = new mongoose_1.Schema({
     description: { type: String, required: true },
     price: { type: Number, required: true },
     count: { type: Number, required: true },
-    category: { type: String, required: true }
-});
+    category: { type: mongoose_1.Schema.Types.ObjectId, ref: 'category', required: true }
+}, { versionKey: false });
 exports.Product = mongoose_1.default.model('Product', productSchema);
