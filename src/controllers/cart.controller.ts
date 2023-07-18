@@ -4,8 +4,10 @@ import {Request, Response} from "express";
 
 export const addToCart = async (req: Request, res: Response) => {
     try {
-        const {products, total} = req.body;
+        const {user_id, products, total, create_time} = req.body;
         const newCartItem = new Cart({
+            user_id,
+            create_time,
             products,
             total
         });

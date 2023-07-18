@@ -5,6 +5,9 @@ import categoryRouter from "./src/routes/category.routes";
 import reviewRouter from "./src/routes/review.routes";
 import userRouter from "./src/routes/user.routes";
 import addressRouter from "./src/routes/shipping.routes";
+import cartRouter from "./src/routes/cart.routes";
+import orderRouter from "./src/routes/order.router";
+
 
 
 
@@ -17,6 +20,9 @@ app.use(categoryRouter);
 app.use(reviewRouter);
 app.use(userRouter);
 app.use(addressRouter);
+app.use(cartRouter);
+app.use(orderRouter);
+
 
 
 

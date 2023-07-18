@@ -14,7 +14,8 @@ const reviewSchema: Schema = new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     product: {type: Schema.Types.ObjectId, ref: 'Product', required: true},
     rating: {type: Number, required: true},
-    comment: {type: String, required: true}
-}, {versionKey: false, timestamps: {createdAt: 'create_time'}});
+    comment: {type: String, required: true},
+    create_time: {type: Number, default: () => Date.now()}
+}, {versionKey: false, timestamps: {createdAt: false, updatedAt: false}});
 
 export const Review = mongoose.model<IReview>('Review', reviewSchema);

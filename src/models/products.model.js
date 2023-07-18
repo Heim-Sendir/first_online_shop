@@ -9,6 +9,7 @@ var productSchema = new mongoose_1.Schema({
     description: { type: String, required: true },
     price: { type: Number, required: true },
     count: { type: Number, required: true },
-    category: { type: mongoose_1.Schema.Types.ObjectId, ref: 'category', required: true }
-}, { versionKey: false, timestamps: { createdAt: 'create_time' } });
+    category: { type: mongoose_1.Schema.Types.ObjectId, ref: 'category', required: true },
+    create_time: { type: Number, default: function () { return Date.now(); } }
+}, { versionKey: false, timestamps: { createdAt: false, updatedAt: false } });
 exports.Product = mongoose_1.default.model('Product', productSchema);

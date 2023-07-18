@@ -18,7 +18,8 @@ const productSchema: Schema = new Schema({
     description: {type: String, required: true},
     price: {type: Number, required: true},
     count: {type: Number, required: true},
-    category: {type: Schema.Types.ObjectId, ref: 'category', required: true}
-}, {versionKey: false, timestamps: {createdAt: 'create_time'}});
+    category: {type: Schema.Types.ObjectId, ref: 'category', required: true},
+    create_time: {type: Number, default: () => Date.now()}
+}, {versionKey: false, timestamps: {createdAt: false, updatedAt: false}});
 
 export const Product = mongoose.model<IProduct>('Product', productSchema);
