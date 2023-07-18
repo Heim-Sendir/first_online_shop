@@ -5,6 +5,7 @@ import {Product} from './products.model';
 interface IReview extends Document {
     user: ObjectId;
     product: ObjectId;
+    create_time: Date,
     rating: number;
     comment: string;
 }
@@ -14,6 +15,6 @@ const reviewSchema: Schema = new Schema({
     product: {type: Schema.Types.ObjectId, ref: 'Product', required: true},
     rating: {type: Number, required: true},
     comment: {type: String, required: true}
-}, {versionKey: false});
+}, {versionKey: false, timestamps: {createdAt: 'create_time'}});
 
 export const Review = mongoose.model<IReview>('Review', reviewSchema);

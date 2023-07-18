@@ -39,15 +39,16 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteProduct = exports.updateOneProduct = exports.getProductById = exports.getAllProducts = exports.createProduct = void 0;
 var products_model_1 = require("../models/products.model");
 var createProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name_1, price, count, description, category, newProduct, saveProduct, error_1;
+    var _a, name_1, price, count, create_time, description, category, newProduct, saveProduct, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
                 _b.trys.push([0, 2, , 3]);
-                _a = req.body, name_1 = _a.name, price = _a.price, count = _a.count, description = _a.description, category = _a.category;
+                _a = req.body, name_1 = _a.name, price = _a.price, count = _a.count, create_time = _a.create_time, description = _a.description, category = _a.category;
                 newProduct = new products_model_1.Product({
                     name: name_1,
                     description: description,
+                    create_time: create_time,
                     price: price,
                     count: count,
                     category: category

@@ -5,12 +5,13 @@ import {Product} from "../models/products.model";
 export const createProduct = async (req: Request, res: Response) => {
     try {
         //Получаем данные из запроса
-        const {name, price, count, description, category} = req.body;
+        const {name, price, count, create_time, description, category} = req.body;
 
         //Создаем новый экземпляр модели "Товар"
         const newProduct = new Product({
             name,
             description,
+            create_time,
             price,
             count,
             category

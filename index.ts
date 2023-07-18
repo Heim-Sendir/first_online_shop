@@ -4,7 +4,7 @@ import productRouter from "./src/routes/products.routes";
 import categoryRouter from "./src/routes/category.routes";
 import reviewRouter from "./src/routes/review.routes";
 import userRouter from "./src/routes/user.routes";
-import addressRouter from "./src/routes/shipping_address.routes";
+import addressRouter from "./src/routes/shipping.routes";
 
 
 

@@ -1,11 +1,12 @@
-import mongoose, {Schema, Document} from "mongoose";
+import mongoose, {Schema, Document, ObjectId} from "mongoose";
 import {Product} from './products.model';
 import {User} from './user.model';
 
 interface Cart extends Document {
-    user: User['_id'];
-    products: Array<{product: Product['_id']; quantity: number}>;
+    user: ObjectId;
+    products: Array<{product: Product[ObjectId]; quantity: number}>;
     total: number;
+    create_time: Date;
 }
 
 const cartSchema: Schema = new Schema({
@@ -16,7 +17,7 @@ const cartSchema: Schema = new Schema({
             quantity: {type: Number, required: true}
         }
     ],
-    total: {type: Number, default: 0}
-}, {versionKey: false});
+    total: {type: Number, default: 0},
+}, {versionKey: false, timestamps: {createdAt: 'create_time'}});
 
 export const Cart = mongoose.model<Cart>('Cart', cartSchema);

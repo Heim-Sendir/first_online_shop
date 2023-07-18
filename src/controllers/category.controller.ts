@@ -3,10 +3,11 @@ import {Request, Response} from "express";
 
 export const createCategory = async (req: Request, res: Response) => {
     try {
-        const {name, description, active} = req.body;
+        const {name, description, active, create_time} = req.body;
         const newCategory = new Category({
             name,
             description,
+            create_time,
             active
         });
 

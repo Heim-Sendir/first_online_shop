@@ -3,16 +3,16 @@ import {Order} from "../models/orders.model";
 
 export const createOrder = async (req: Request, res: Response) => {
     try {
-        const {user, products, shippingAddress, total, paymentMethod, isPaid, paidAt} = req.body;
+        const {user, products, shippingAddress, total, paymentMethod, isPaid, create_time} = req.body;
 
         const newOrder = new Order({
             user,
             products,
+            create_time,
             shippingAddress,
             total,
             paymentMethod,
-            isPaid,
-            paidAt
+            isPaid
         });
 
         const saveOrder = await newOrder.save();

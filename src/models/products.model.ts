@@ -6,6 +6,7 @@ import mongoose, {Schema, Document, ObjectId} from 'mongoose';
 interface IProduct extends Document {
     name: string,
     description: string,
+    create_time: Date,
     price: number,
     count: number,
     category: ObjectId
@@ -18,6 +19,6 @@ const productSchema: Schema = new Schema({
     price: {type: Number, required: true},
     count: {type: Number, required: true},
     category: {type: Schema.Types.ObjectId, ref: 'category', required: true}
-}, {versionKey: false});
+}, {versionKey: false, timestamps: {createdAt: 'create_time'}});
 
 export const Product = mongoose.model<IProduct>('Product', productSchema);

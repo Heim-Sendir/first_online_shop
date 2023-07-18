@@ -3,10 +3,11 @@ import {User} from '../models/user.model';
 
 export const createUser = async (req: Request, res: Response) => {
     try {
-        const {name, email, password, active} = req.body;
+        const {name, email, create_time, password, active} = req.body;
         const newUser = new User ({
             name,
             email,
+            create_time,
             password,
             active
         });

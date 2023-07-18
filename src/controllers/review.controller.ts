@@ -3,10 +3,11 @@ import {Review} from "../models/review.model";
 
 export const addReview = async (req: Request, res: Response) => {
     try {
-        const {user, product, rating, comment} = req.body;
+        const {user, product, create_time, rating, comment} = req.body;
         const newReview = new Review({
             user,
             product,
+            create_time,
             rating,
             comment
         });
