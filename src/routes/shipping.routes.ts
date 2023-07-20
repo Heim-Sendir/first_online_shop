@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 import {createShipping} from "../controllers/shipping.controller";
 
 const addressRouter = express.Router();

@@ -1,4 +1,4 @@
-import * as express from "express";
+import express from "express";
 import {addReview, deleteReview} from "../controllers/review.controller";
 
 const reviewRouter = express.Router();

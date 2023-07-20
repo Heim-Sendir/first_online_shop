@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import {createOrder, getAllOrders, getOrderById} from "../controllers/order.controller"
 
 const orderRouter = express.Router();
