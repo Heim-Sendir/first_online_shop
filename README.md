@@ -1,2 +1,2 @@
-# online_shop
- My fisrt online shop with billing
+# Online shop
+ My first online shop with billing
