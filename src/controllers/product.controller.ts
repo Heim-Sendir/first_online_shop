@@ -29,6 +29,15 @@ export const createProduct = async (req: Request, res: Response) => {
     }
 };
 
+export const getProduct = async (req: Request, res: Response) => {
+    try {
+        const products = await Product.find();
+        res.render('products', {products});
+    } catch (error) {
+        res.status(500).json({error: error.message});
+    }
+};
+
 
 //Метод для получения всех товаро
 export const getAllProducts = async (req: Request, res: Response) => {

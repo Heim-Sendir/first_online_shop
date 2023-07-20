@@ -1,0 +1,60 @@
+html {
+    background-color:#214c84;
+    background-blend-mode:overlay;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background-color: rgba(22, 129, 182, 0.85);
+    background-repeat:no-repeat;
+    background-size:cover;
+    height:100%;
+    font-family: Calibri, sans-serif;
+}
+
+body {
+    background-color:transparent;
+    font-family: Calibri, sans-serif;
+}
+
+.registration-cssave{
+    padding:50px 0;
+}
+
+.registration-cssave form {
+    max-width:800px;
+    padding:50px 70px;
+    border-radius:10px;
+    box-shadow:4px 4px 15px rgba(0, 0, 0, 0.2);
+    background-color:#fff;
+}
+
+.registration-cssave form h3 {
+    font-weight:bold;
+    margin-bottom:30px;
+}
+
+.registration-cssave .item {
+    border-radius:10px;
+    margin-bottom:25px;
+    padding:10px 20px;
+}
+
+.registration-cssave .create-account {
+    border-radius:15px;
+    padding:7px 10px;
+    font-size:17px;
+    font-weight: normal;
+    background-color: #35366c;
+    border:none;
+    font-family: "Calibri", sans-serif;
+    color:white;
+    margin-top:5px;
+}
+
+@media (max-width: 700px) {
+    .registration-cssave form {
+        padding:50px 20px;
+        font-family: Calibri, sans-serif;
+        color: rgba(0, 0, 0, 0.46);
+    }
+}

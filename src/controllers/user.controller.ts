@@ -12,6 +12,11 @@ export const createUser = async (req: Request, res: Response) => {
             active
         });
 
+        const existingUser = await User.findOne({email});
+        if (existingUser) {
+            return res.status(409).json({error: 'Пользователь с таким e-mail уже существует'});
+        }
+
         const savedUser = await newUser.save();
 
         res.status(201).json(savedUser);
@@ -35,7 +40,6 @@ export const getUsers = async (req: Request, res: Response) => {
 export const deleteUser = async (req: Request, res: Response) => {
     try {
     const { id } = req.params;
-   // await User.findByIdAndDelete(id);
     await User.findByIdAndUpdate(
         id,
         {active: false},

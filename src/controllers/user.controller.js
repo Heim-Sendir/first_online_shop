@@ -39,11 +39,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteUser = exports.getUsers = exports.createUser = void 0;
 var user_model_1 = require("../models/user.model");
 var createUser = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, name_1, email, create_time, password, active, newUser, savedUser, error_1;
+    var _a, name_1, email, create_time, password, active, newUser, existingUser, savedUser, error_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _b.trys.push([0, 2, , 3]);
+                _b.trys.push([0, 3, , 4]);
                 _a = req.body, name_1 = _a.name, email = _a.email, create_time = _a.create_time, password = _a.password, active = _a.active;
                 newUser = new user_model_1.User({
                     name: name_1,
@@ -52,16 +52,22 @@ var createUser = function (req, res) { return __awaiter(void 0, void 0, void 0, 
                     password: password,
                     active: active
                 });
-                return [4 /*yield*/, newUser.save()];
+                return [4 /*yield*/, user_model_1.User.findOne({ email: email })];
             case 1:
+                existingUser = _b.sent();
+                if (existingUser) {
+                    return [2 /*return*/, res.status(409).json({ error: 'Пользователь с таким e-mail уже существует' })];
+                }
+                return [4 /*yield*/, newUser.save()];
+            case 2:
                 savedUser = _b.sent();
                 res.status(201).json(savedUser);
-                return [3 /*break*/, 3];
-            case 2:
+                return [3 /*break*/, 4];
+            case 3:
                 error_1 = _b.sent();
                 res.status(500).json({ error: error_1.message });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
         }
     });
 }); };
@@ -93,10 +99,8 @@ var deleteUser = function (req, res) { return __awaiter(void 0, void 0, void 0, 
             case 0:
                 _a.trys.push([0, 2, , 3]);
                 id = req.params.id;
-                // await User.findByIdAndDelete(id);
                 return [4 /*yield*/, user_model_1.User.findByIdAndUpdate(id, { active: false }, { new: true })];
             case 1:
-                // await User.findByIdAndDelete(id);
                 _a.sent();
                 res.json({ message: 'Деактивация пользователя прошла успешно' });
                 return [3 /*break*/, 3];

@@ -7,13 +7,14 @@ import userRouter from "./src/routes/user.routes";
 import addressRouter from "./src/routes/shipping.routes";
 import cartRouter from "./src/routes/cart.routes";
 import orderRouter from "./src/routes/order.router";
-
-
+import authRouter from "./src/routes/auth.router";
 
 
 const app = express();
 const port = 3000;
 
+app.use(express.static('public'));
+app.use('/products', productRouter);
 app.use(express.json());
 app.use(productRouter);
 app.use(categoryRouter);
@@ -22,8 +23,7 @@ app.use(userRouter);
 app.use(addressRouter);
 app.use(cartRouter);
 app.use(orderRouter);
-
-
+app.post('/register', authRouter);
 
 
 

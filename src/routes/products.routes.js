@@ -8,4 +8,5 @@ productRouter.get('/products/:id', product_controller_1.getProductById);
 productRouter.get('/products', product_controller_1.getAllProducts);
 productRouter.delete('/products/:id', product_controller_1.deleteProduct);
 productRouter.put('/products/:id', product_controller_1.updateOneProduct);
+productRouter.get('/products', product_controller_1.getProduct);
 exports.default = productRouter;

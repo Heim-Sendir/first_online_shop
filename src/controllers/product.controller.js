@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteProduct = exports.updateOneProduct = exports.getProductById = exports.getAllProducts = exports.createProduct = void 0;
+exports.deleteProduct = exports.updateOneProduct = exports.getProductById = exports.getAllProducts = exports.getProduct = exports.createProduct = void 0;
 var products_model_1 = require("../models/products.model");
 var createProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
     var _a, name_1, price, count, create_time, description, category, newProduct, saveProduct, error_1;
@@ -69,9 +69,29 @@ var createProduct = function (req, res) { return __awaiter(void 0, void 0, void 
     });
 }); };
 exports.createProduct = createProduct;
+var getProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var products, error_2;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, products_model_1.Product.find()];
+            case 1:
+                products = _a.sent();
+                res.render('products', { products: products });
+                return [3 /*break*/, 3];
+            case 2:
+                error_2 = _a.sent();
+                res.status(500).json({ error: error_2.message });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); };
+exports.getProduct = getProduct;
 //Метод для получения всех товаро
 var getAllProducts = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var products, error_2;
+    var products, error_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -83,9 +103,9 @@ var getAllProducts = function (req, res) { return __awaiter(void 0, void 0, void
                 res.json(products);
                 return [3 /*break*/, 3];
             case 2:
-                error_2 = _a.sent();
+                error_3 = _a.sent();
                 //В случае ошибки отправляем ошибочный ответ
-                res.status(500).json({ error: error_2.message });
+                res.status(500).json({ error: error_3.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -93,7 +113,7 @@ var getAllProducts = function (req, res) { return __awaiter(void 0, void 0, void
 }); };
 exports.getAllProducts = getAllProducts;
 var getProductById = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, product, error_3;
+    var id, product, error_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -108,8 +128,8 @@ var getProductById = function (req, res) { return __awaiter(void 0, void 0, void
                 res.json(product);
                 return [3 /*break*/, 3];
             case 2:
-                error_3 = _a.sent();
-                res.status(500).json({ error: error_3.message });
+                error_4 = _a.sent();
+                res.status(500).json({ error: error_4.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -117,7 +137,7 @@ var getProductById = function (req, res) { return __awaiter(void 0, void 0, void
 }); };
 exports.getProductById = getProductById;
 var updateOneProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, _a, name_2, description, price, count, category, updateProduct, error_4;
+    var id, _a, name_2, description, price, count, category, updateProduct, error_5;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -139,8 +159,8 @@ var updateOneProduct = function (req, res) { return __awaiter(void 0, void 0, vo
                 res.json(updateProduct);
                 return [3 /*break*/, 3];
             case 2:
-                error_4 = _b.sent();
-                res.status(500).json({ error: error_4.message });
+                error_5 = _b.sent();
+                res.status(500).json({ error: error_5.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }
@@ -148,7 +168,7 @@ var updateOneProduct = function (req, res) { return __awaiter(void 0, void 0, vo
 }); };
 exports.updateOneProduct = updateOneProduct;
 var deleteProduct = function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var id, error_5;
+    var id, error_6;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -160,8 +180,8 @@ var deleteProduct = function (req, res) { return __awaiter(void 0, void 0, void 
                 res.json({ message: 'Товар успешно удален' });
                 return [3 /*break*/, 3];
             case 2:
-                error_5 = _a.sent();
-                res.status(500).json({ error: error_5.message });
+                error_6 = _a.sent();
+                res.status(500).json({ error: error_6.message });
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

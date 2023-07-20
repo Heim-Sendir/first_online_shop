@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="css/register.css">
+
+</head>
+<body>
+<div class="registration-cssave">
+    <form id="registrationForm" action="/register" method="post">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" required>
+        <br>
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email" required>
+        <br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" required>
+        <br>
+        <label for="confirmPassword">Повторите пароль:</label>
+        <input type="password" id="confirmPassword" required>
+        <br>
+        <button type="submit" id="register">Зарегистрироваться</button>
+    </form>
+</div>
+
+<div id="errorContainer" class="error-message"></div>
+<div id="successContainer" class="success-message"></div>
+
+<script src="js/register.js"></script>
+</body>
+</html>
