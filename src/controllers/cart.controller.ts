@@ -15,7 +15,7 @@ export const addToCart = async (req: Request, res: Response) => {
         const saveCardItem = await newCartItem.save();
 
         res.status(201).json(saveCardItem);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -27,7 +27,7 @@ export const removeFromCart = async (req: Request, res: Response) => {
         await Cart.findByIdAndDelete(id);
 
         res.json({message: 'Товар успешно удален из корзины'})
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -37,7 +37,7 @@ export const getCartItems = async (req: Request, res: Response) => {
       const cartItems = await Cart.find();
 
       res.json(cartItems);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };

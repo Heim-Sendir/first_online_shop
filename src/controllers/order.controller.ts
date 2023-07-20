@@ -20,7 +20,7 @@ export const createOrder = async (req: Request, res: Response) => {
         const saveOrder = await newOrder.save();
 
         res.status(201).json(saveOrder);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -30,7 +30,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
         const order = await Order.find();
 
         res.json(order);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -43,7 +43,7 @@ export const getOrderById = async (req: Request, res: Response) => {
             return res.status(404).json({error: 'Заказ не найден'});
         }
         res.json(order);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };

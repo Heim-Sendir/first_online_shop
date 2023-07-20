@@ -2,11 +2,11 @@
   "name": "online_shop",
   "version": "1.0.0",
   "description": "My first online shop with TypeScript",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node dist/app.js"
   },
   "author": "",
   "license": "ISC",

@@ -1,13 +1,13 @@
-import * as express from "express";
-import { connectDatabase } from "./src/mongodb";
-import productRouter from "./src/routes/products.routes";
-import categoryRouter from "./src/routes/category.routes";
-import reviewRouter from "./src/routes/review.routes";
-import userRouter from "./src/routes/user.routes";
-import addressRouter from "./src/routes/shipping.routes";
-import cartRouter from "./src/routes/cart.routes";
-import orderRouter from "./src/routes/order.router";
-import authRouter from "./src/routes/auth.router";
+import express from "express";
+import { connectDatabase } from "./mongodb";
+import productRouter from "./routes/products.routes";
+import categoryRouter from "./routes/category.routes";
+import reviewRouter from "./routes/review.routes";
+import userRouter from "./routes/user.routes";
+import addressRouter from "./routes/shipping.routes";
+import cartRouter from "./routes/cart.routes";
+import orderRouter from "./routes/order.router";
+import authRouter from "./routes/auth.router";
 
 
 const app = express();

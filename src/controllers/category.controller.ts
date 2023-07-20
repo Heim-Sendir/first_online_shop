@@ -14,7 +14,7 @@ export const createCategory = async (req: Request, res: Response) => {
         const saveCategory = await newCategory.save();
 
         res.status(201).json(saveCategory);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -23,7 +23,7 @@ export const getAllCategory = async (req:Request, res: Response) => {
     try {
         const category = await Category.find();
         res.json(category);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 }
@@ -37,7 +37,7 @@ export const getCategoryById = async (req:Request,res: Response) => {
         }
 
         res.json(category);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -48,7 +48,7 @@ export const deleteCategory = async (req: Request, res: Response) => {
         await Category.findByIdAndDelete(id);
 
         res.json({message: 'Категория успешно удалена'})
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };

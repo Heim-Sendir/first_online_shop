@@ -20,7 +20,7 @@ export const createUser = async (req: Request, res: Response) => {
         const savedUser = await newUser.save();
 
         res.status(201).json(savedUser);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -31,7 +31,7 @@ export const getUsers = async (req: Request, res: Response) => {
         const users = await User.find();
 
         res.json(users);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -47,7 +47,7 @@ export const deleteUser = async (req: Request, res: Response) => {
     );
 
     res.json({message: 'Деактивация пользователя прошла успешно'});
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };

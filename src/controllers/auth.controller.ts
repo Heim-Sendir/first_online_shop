@@ -47,7 +47,7 @@ export const registerUser = async (req: Request, res: Response): Promise<Respons
 
         // Отправляем успешный ответ
         return res.status(201).json(savedUser);
-    } catch (error) {
+    } catch (error: any) {
         return res.status(500).json({error: error.message});
     }
 };

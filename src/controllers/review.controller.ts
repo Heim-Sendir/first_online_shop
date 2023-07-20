@@ -14,7 +14,7 @@ export const addReview = async (req: Request, res: Response) => {
 
         const saveReview = await newReview.save();
         res.status(201).json(saveReview);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -25,7 +25,7 @@ export const deleteReview = async (req: Request, res: Response) => {
         await Review.findByIdAndDelete(id);
 
         res.json({message: 'Отзыв успешно удален'})
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };

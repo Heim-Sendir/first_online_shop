@@ -16,7 +16,7 @@ export const createShipping = async (req: Request, res: Response) => {
         const saveShipping = await newShipping.save();
 
         res.status(201).json(saveShipping);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };

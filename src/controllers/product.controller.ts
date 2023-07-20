@@ -23,7 +23,7 @@ export const createProduct = async (req: Request, res: Response) => {
 
         //Отправялем успешный ответ с сохраненным товаром
         res.status(201).json(saveProduct);
-    } catch (error) {
+    } catch (error: any) {
         //В случае ошибки отправялем ошибочный ответ
         res.status(500).json({error: error.message});
     }
@@ -33,7 +33,7 @@ export const getProduct = async (req: Request, res: Response) => {
     try {
         const products = await Product.find();
         res.render('products', {products});
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -47,7 +47,7 @@ export const getAllProducts = async (req: Request, res: Response) => {
 
         //Отправляем успешный ответ с полученными товарами
         res.json(products);
-    } catch (error) {
+    } catch (error: any) {
         //В случае ошибки отправляем ошибочный ответ
         res.status(500).json({error: error.message});
     }
@@ -62,7 +62,7 @@ export const getProductById = async (req: Request, res: Response) => {
         }
 
         res.json(product);
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 };
@@ -88,7 +88,7 @@ export const updateOneProduct = async (req: Request, res: Response) => {
         }
 
         res.json(updateProduct);
-    } catch (error) {
+    } catch (error: any) {
 
         res.status(500).json({error: error.message});
     }
@@ -101,7 +101,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
         await Product.findByIdAndDelete(id);
 
         res.json({message: 'Товар успешно удален'});
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({error: error.message});
     }
 }
