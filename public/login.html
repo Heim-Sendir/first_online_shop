@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>Вход в систему</title>
-    <link rel="stylesheet" href="/public/css/login.css">
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="css/login.css">
+
 </head>
-
 <body>
-
 <div class="registration-cssave">
-    <form>
-        <h3 class="text-center">Войдите в систему</h3>
-        <div class="form-group">
-            <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин" required>
-        </div>
-        <div class="form-group">
-            <input class="form-control item" type="password" name="Пароль" minlength="6" id="password" placeholder="Пароль" required>
-        </div>
-        <div class="form-group">
-            <input class="form-control item" type="email" name="email" id="email" placeholder="Email" required>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-primary btn-block create-account" type="submit">Вход в аккаунт</button>
-        </div>
-        <div class="form-register">
-            <button class="btn btn-primary btn-block create-account" type="submit">Регистрация</button>
-        </div>
+    <form id="registrationForm" action="/register" method="post">
+        <label for="email">Электронная почта:</label>
+        <input type="email" id="email" required>
+        <br>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" required>
+        <br>
+        <button type="submit" id="logIn">Войти</button>
     </form>
 </div>
+<div class="reg">
+    <a href="/register.html">Нет аккаунта?</a>
+</div>
+<div class="message-container">
+    <div id="errorContainer" class="error-message"></div>
+    <div id="successContainer" class="success-message"></div>
+</div>
+
+<script src="js/login.js"></script>
 </body>
-
 </html>
-

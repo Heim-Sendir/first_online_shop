@@ -15,7 +15,6 @@ form.addEventListener('submit', async (event) => {
     const confirmPassword = passwordInput.value;
     const active = true;
 
-    console.log(password);
 
     if (password !== confirmPassword) {
         errorContainer.textContent = 'Пароли не совпадают';
@@ -28,29 +27,6 @@ form.addEventListener('submit', async (event) => {
         password,
         active,
     };
-
-    /*
-    try {
-        const response = await fetch('/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type' : 'application/json',
-            },
-            body: JSON.stringify(user),
-        });
-
-       //const data = await response.json();
-
-        if (response.ok) {
-            successContainer.textContent = 'Регистрация успешно завершена';
-        } else {
-            errorContainer.textContent = 'Ошибка при отправке';
-        }
-    } catch (error) {
-        errorContainer.textContent = 'Ошибка при отправке';
-    }
-
-     */
 
     try {
         const response = await fetch('/register', {

@@ -14,7 +14,9 @@ export const registerUser = async (req: Request, res: Response): Promise<Respons
         // Получаем данные пользователя из запроса
         const {name, email, password} = req.body;
 
-        console.log('Исходный пароль: ', password);
+        console.log('Имя: ', name);
+        console.log('Почта: ', email);
+        console.log('Пароль: ', password);
 
         // Проверяем, существует ли уже пользователь с таким email
         const existingUser = await User.findOne({email});

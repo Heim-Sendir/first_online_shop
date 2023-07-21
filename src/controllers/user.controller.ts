@@ -1,5 +1,6 @@
 import {Request, Response} from "express";
 import {User} from '../models/user.model';
+import {Product} from "../models/products.model";
 
 export const createUser = async (req: Request, res: Response) => {
     try {
@@ -36,6 +37,20 @@ export const getUsers = async (req: Request, res: Response) => {
     }
 };
 
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const {id} = req.params;
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({error: 'Пользователь не найден'})
+        }
+
+        res.json(user);
+    } catch (error: any) {
+        res.status(500).json({error: error.message});
+    }
+};
+
 
 export const deleteUser = async (req: Request, res: Response) => {
     try {
@@ -51,3 +66,4 @@ export const deleteUser = async (req: Request, res: Response) => {
         res.status(500).json({error: error.message});
     }
 };
+

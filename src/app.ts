@@ -8,6 +8,7 @@ import addressRouter from "./routes/shipping.routes";
 import cartRouter from "./routes/cart.routes";
 import orderRouter from "./routes/order.router";
 import authRouter from "./routes/auth.router";
+import loginRouter from "./routes/login.routes";
 
 
 const app = express();
@@ -24,13 +25,14 @@ app.use(addressRouter);
 app.use(cartRouter);
 app.use(orderRouter);
 app.post('/register', authRouter);
+app.post('/login', loginRouter);
 
 
 
 connectDatabase()
     .then(() => {
         app.listen(port, () => {
-            console.log(`Сервер запущен на порту ${port}`);
+            console.log(`Сервер запущен на порту ${port} \n-----------------------------\n-----------------------------\n`);
         });
     })
     .catch((error) => {
