@@ -1,3 +1,5 @@
+import fetch from 'node-fetch';
+
 const form = document.querySelector('#registrationForm');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');

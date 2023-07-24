@@ -1,6 +1,6 @@
-import * as bcrypt from 'bcrypt';
 import {User} from "../models/user.model";
 import {Request, Response} from "express";
+import {hashPassword} from "../utils/auth.utils";
 
 /**
  * Обработка запроса регистрации нового пользователя
@@ -14,22 +14,14 @@ export const registerUser = async (req: Request, res: Response): Promise<Respons
         // Получаем данные пользователя из запроса
         const {name, email, password} = req.body;
 
-        console.log('Имя: ', name);
-        console.log('Почта: ', email);
-        console.log('Пароль: ', password);
-
         // Проверяем, существует ли уже пользователь с таким email
         const existingUser = await User.findOne({email});
         if (existingUser) {
             return res.status(409).json({error: 'Пользователь с таким e-mail уже существует'});
         }
 
-        console.log('Проверка по e-mail: ', 'Такой e-mail не существует, всё ок');
-
         // Хешируем пароль перед сохранением в базе данных
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        console.log('Проверка хэша: ', hashedPassword);
+        const hashedPassword = await hashPassword(password);
 
         // Создаем нового пользователя
         const newUser = new User({
@@ -38,14 +30,8 @@ export const registerUser = async (req: Request, res: Response): Promise<Respons
             password: hashedPassword,
         });
 
-        console.log('Возвращаем юзера: ', newUser);
-
-
         // Сохраняем пользователя в базе данных
         const savedUser = await newUser.save();
-
-        console.log('Юзер должен сохраниться: ', savedUser);
-
 
         // Отправляем успешный ответ
         return res.status(201).json(savedUser);
@@ -53,5 +39,3 @@ export const registerUser = async (req: Request, res: Response): Promise<Respons
         return res.status(500).json({error: error.message});
     }
 };
-
-/*{message: 'Пользователь успешно зарегистрирован'}*/

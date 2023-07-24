@@ -1,28 +1,26 @@
 import { User } from "../models/user.model";
 import { Request, Response } from "express";
+import {comparePassword} from "../utils/auth.utils";
 
-export const logIn = async (req: Request, res: Response) => {
+interface RequestBody {
+    email: string;
+    password: string;
+}
+
+
+
+export const logIn = async (req: Request<{}, {}, RequestBody>, res: Response) => {
     try {
         const {email, password} = req.body;
-        //console.log('Получаем почту: ', email);
-        //console.log('Получаем пароль: ', password);
 
-        const user = await User.findOne({ email });
-        console.log('Получаем email: ', email,'---', 'Тип данных: ' , typeof email);
-        console.log('Получаем пароль: ', password,'---', 'Тип данных: ' , typeof password);
+        const userData = await User.findOne({email});
 
-        //console.log('Получаем юзера', user);
-
-        if (!user) {
+        if (!userData) {
             return res.status(404).json({ error: 'Пользователь с таким e-mail не найден' })
-        } console.log('Такой email есть в бд, всё ок');
+        }
 
-
-        const isPasswordCorrect = await user.comparePassword(password);
-        console.log('Правильный ли пароль?', user.comparePassword(password));
-
-
-        if (isPasswordCorrect === false) {
+        const isPasswordCorrect = await comparePassword(password, userData["password"]);
+        if (!isPasswordCorrect) {
             return res.status(401).json({ error: 'Неверный пароль' });
         }
 
